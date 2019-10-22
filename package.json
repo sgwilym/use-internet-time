@@ -1,6 +1,6 @@
 {
   "name": "use-internet-time",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Add newlines to a string of text given a font style and width",
   "main": "src/index.ts",
   "author": "Sam Gwilym <gwilym@me.com>",
@@ -40,11 +40,11 @@
     "testEnvironment": "jest-environment-jsdom-fourteen"
   },
   "keywords": [
-    "newline",
-    "linebreak",
-    "visual",
-    "typeset",
-    "styled"
+    "internet",
+    "time",
+    "react",
+    "hooks",
+    "beats"
   ],
   "peerDependencies": {
     "react": "^16.10.2"

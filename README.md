@@ -4,7 +4,7 @@ A React hook for using internet time, using [dot-beat-time](https://github.com/s
 
 ## Motivation
 
-[dot-beat-time](https://github.com/sgwilym/dot-beat-time)'s README':
+[dot-beat-time](https://github.com/sgwilym/dot-beat-time)'s README:
 
 > The millennium is upon us. The age of the internet arrived long ago. Why are we still coordinating meetings across timezones? Fortunately internet time — which splits the day into 1000 beats and which is consistent across the world — is here to fix all that.
 
