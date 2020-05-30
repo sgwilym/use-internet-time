@@ -18,40 +18,46 @@ And now you can easily bring the future of time to your React apps!
 
 ## Example usage
 
-```
+```jsx
 import useInternetTime from 'use-internet-time';
 
 const InternetClock = () => {
   const time = useInternetTime();
 
-  return <div>{`It's currently ${time} all over the world!`}</div>
-}
+  return <div>{`It's currently ${time} all over the world!`}</div>;
+};
 ```
 
 ## Usage
 
-```
+```jsx
 useInternetTime(
   options?: {
     fractional?: boolean,
-    ssr?: boolean
   }
 ): string
 ```
 
-`useInternetTime` accepts an options argument with two values:
+`useInternetTime` accepts an options argument with a single value:
 
 ### `fractional`
 
-> Default: `false` 
+> Default: `false`
 
 When true, returns a string formatted in long internet time (e.g. `@230.21`). When false, returns a string formatted in short internet time (e.g. `@230`)
 
-### `ssr`
+## Server-side rendering usage
 
-> Default: `false` 
+If you use `useInternetTime` with a server-side rendering framework like Gatsby or Next with `fractional` set to true, you're likely to see warnings in your console from React regarding mismatching text or mismatching values. You can silence these by setting `suppressHydrationWarning={true}` on the element where you're using `time`. For example:
 
-When true, `useInternetTime` will return an empty string on initial render instead of the current time. This makes `useInternetTime` server-side rendering-safe.
+```jsx
+import useInternetTime from 'use-internet-time';
 
-This prevents mis-match issues in server-side-rendered environments like Gatsby and Next, where network latency can result in webpage delivery between fractional beats. For example, the server might evaluate to `@230.21` but the client might evaluate to `@230.22`, causing React to error. Enabling this option will prevent this behavior.
+const SSRClock = () => {
+  const time = useInternetTime({ fractional: true });
 
+  return <div suppressHydrationWarning={true}>The time is: {time}</div>;
+};
+```
+
+This is an escape hatch from React DOM to help suppress mismatching values that cannot be avoided (e.g. timestamps), and it only works one element deep. See the [React DOM `hydrate` docs]("https://reactjs.org/docs/react-dom.html#hydrate") for more information.
