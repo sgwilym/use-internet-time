@@ -1,20 +1,16 @@
-import { useState, useEffect } from "react";
-import { now } from "dot-beat-time";
+import { useState, useEffect } from 'react';
+import { now } from 'dot-beat-time';
 
 type InternetTimeHookOptions = {
   fractional?: boolean;
-  ssr?: boolean;
 };
 
 function useInternetTime(options?: InternetTimeHookOptions) {
   const isFractional = options && options.fractional;
-  const ssr = options && options.ssr;
 
-  const [time, setTime] = useState(ssr ? "" : now(isFractional));
+  const [time, setTime] = useState(now(isFractional));
 
   useEffect(() => {
-    if (ssr) setTime(now(isFractional));
-
     const interval = setInterval(() => {
       setTime(now(isFractional));
     }, 864);
@@ -22,7 +18,7 @@ function useInternetTime(options?: InternetTimeHookOptions) {
     return () => {
       clearInterval(interval);
     };
-  }, [isFractional, ssr]);
+  }, [isFractional]);
 
   return time;
 }
