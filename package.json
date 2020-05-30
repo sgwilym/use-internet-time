@@ -46,7 +46,7 @@
     "beats"
   ],
   "peerDependencies": {
-    "react": "^16.13.1"
+    "react": "^16.10.2"
   },
   "dependencies": {
     "dot-beat-time": "^1.2.1"
