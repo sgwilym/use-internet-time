@@ -1,5 +1,5 @@
-import { useState, useEffect } from "react";
-import { now } from "dot-beat-time";
+import { useState, useEffect } from 'react';
+import { now } from 'dot-beat-time';
 
 type InternetTimeHookOptions = {
   fractional?: boolean;

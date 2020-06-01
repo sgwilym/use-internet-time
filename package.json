@@ -1,7 +1,7 @@
 {
   "name": "use-internet-time",
   "version": "1.0.1",
-  "description": "Add newlines to a string of text given a font style and width",
+  "description": "React Hook for displaying the current time on the internet",
   "main": "src/index.ts",
   "author": "Sam Gwilym <gwilym@me.com>",
   "license": "MIT",
@@ -17,7 +17,6 @@
     "@types/jest": "^24.0.18",
     "@types/react": "^16.9.9",
     "babel-eslint": "^10.0.3",
-    "canvas": "^2.5.0",
     "eslint": "^6.3.0",
     "jest": "^24.9.0",
     "typescript": "^3.5.3"

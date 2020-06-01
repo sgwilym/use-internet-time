@@ -18,24 +18,46 @@ And now you can easily bring the future of time to your React apps!
 
 ## Example usage
 
-```
+```jsx
 import useInternetTime from 'use-internet-time';
 
 const InternetClock = () => {
   const time = useInternetTime();
 
-  return <div>{`It's currently ${time} all over the world!`}</div>
-}
+  return <div>{`It's currently ${time} all over the world!`}</div>;
+};
 ```
 
 ## Usage
 
-```
+```jsx
 useInternetTime(
   options?: {
-    fractional?: boolean
+    fractional?: boolean,
   }
 ): string
 ```
 
-`useInternetTime` accepts an options argument with one option: `fractional`, which when set to `true` will return with long internet time, e.g. `@230.21`.
+`useInternetTime` accepts an options argument with a single value:
+
+### `fractional`
+
+> Default: `false`
+
+When true, returns a string formatted in long internet time (e.g. `@230.21`). When false, returns a string formatted in short internet time (e.g. `@230`)
+
+## Server-side rendering usage
+
+If you use `useInternetTime` with a server-side rendering framework like Gatsby or Next with `fractional` set to true, you're likely to see warnings in your console from React regarding mismatching text or mismatching values. You can silence these by setting `suppressHydrationWarning={true}` on the element where you're using `time`. For example:
+
+```jsx
+import useInternetTime from 'use-internet-time';
+
+const SSRClock = () => {
+  const time = useInternetTime({ fractional: true });
+
+  return <div suppressHydrationWarning={true}>The time is: {time}</div>;
+};
+```
+
+This is an escape hatch from React DOM to help suppress mismatching values that cannot be avoided (e.g. timestamps), and it only works one element deep. See the [React DOM `hydrate` docs]("https://reactjs.org/docs/react-dom.html#hydrate") for more information.
